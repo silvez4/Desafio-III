@@ -7,6 +7,9 @@
       @input="$emit('update:bnome', $event.target.value)"
     />
     <button v-on:click="teste">Teste</button>
+    <h1 v-if="usuario">
+      {{ usuario.data.age }}
+    </h1>
   </div>
 </template>
 
@@ -19,6 +22,11 @@ export default {
   name: "Usuario",
   props: ["bnome"],
   emits: ["update:bnome"],
+  data() {
+    return {
+      usuario: [],
+    };
+  },
   watch: {
     bnome: function (newVal, oldVal) {
       // watch it
@@ -26,18 +34,23 @@ export default {
     },
   },
   methods: {
-    teste() {
+    async teste() {
       var nome = this.bnome;
-      const usuario = ref([]);
-      let fetchUsuario = () =>
-        api
-          .get("/?name=" + nome)
-          .then((resp) => (usuario.value = resp.data))
-          .catch((err) => console.log(err));
+      // const usuario = ref([]);
+      // let fetchUsuario = () =>
+      try {
+        const apiusuario = await api.get("/?name=" + nome);
+        // .then((resp) => (apiusuario.value = resp.data))
+        // .catch((err) => console.log(err));
+        console.warn(apiusuario.data);
+        // console.warn(apiusuario.data);
+        this.usuario = apiusuario;
+        console.warn(this.usuario);
+      } catch (err) {
+        console.log(err);
+      }
       // onMounted(fetchUsuario);
-      console.warn(fetchUsuario);
-      console.warn(nome);
-      return { usuario };
+      // return { usuario };
     },
   },
 };
