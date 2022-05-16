@@ -1,5 +1,7 @@
 <template>
   <div>
+    <!-- <router-link class="link" :to="{ path: '/user', query: { name: 'Foo' }}">Say hello</router-link> -->
+    <router-view />
     <AgifyApi />
   </div>
 </template>
