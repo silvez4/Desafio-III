@@ -6,10 +6,11 @@
         <!-- Media de Idade do Nome {{ usuario.name }} é de {{ usuario.age }} Anos -->
       </h1>
       <router-link to="/user">Usuario</router-link>
-      <router-link to="/busca" >Busca</router-link>
-    <router-link class="link" :to="{ path: '/user', query: { name: FNome }}">Say hello</router-link>
+      <router-link to="/busca">Busca</router-link>
+      <router-link class="link" :to="{ path: '/user', query: { name: FNome } }"
+        >Say hello</router-link
+      >
 
-     
       <h1>Input {{ FNome }}</h1>
       <input type="text" name="newName" />
       <button v-on:click="updateName">Buscar</button>
