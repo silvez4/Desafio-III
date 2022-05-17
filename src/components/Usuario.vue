@@ -86,7 +86,7 @@ export default defineComponent({
 .content h1 {
   font-weight: 300;
   padding-bottom: 1rem;
-  background: var(--gradiente);
+  background: var(--gradiente-round);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
