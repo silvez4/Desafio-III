@@ -1,11 +1,12 @@
 <template>
-  <div>
-    <h1>Usuario: {{ name }}</h1>
-    <h1 v-if="usuario">
-      {{ usuario.age }}
-    </h1>
-
-    <h1 v-else>Digite Nome para busca</h1>
+  <div class="content">
+    <div class="user" v-if="usuario.age">
+      <h1>Usuario: {{ capitalize }}</h1>
+      <h1>
+        {{ usuario.age }}
+      </h1>
+    </div>
+    <h1 v-else>Carregando...</h1>
   </div>
 </template>
 sc
@@ -22,6 +23,12 @@ export default defineComponent({
     };
   },
 
+  computed: {
+    capitalize() {
+      return this.name.charAt(0).toUpperCase() + this.name.slice(1);
+    },
+  },
+
   watch: {
     name: function (newVal, oldVal) {
       // console.log("Prop changed: ", newVal, " | was: ", oldVal);
@@ -31,8 +38,10 @@ export default defineComponent({
   beforeMount() {
     this.teste();
   },
+
   methods: {
     async teste() {
+      this.usuario = [];
       var nome = this.name;
       console.warn(this.name);
       try {
@@ -46,3 +55,12 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+.content {
+  text-align: center;
+}
+.content h1 {
+  font-weight: 300;
+}
+</style>
