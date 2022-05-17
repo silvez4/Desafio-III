@@ -1,57 +1,48 @@
 <template>
   <div>
-    <h1>Usuario: {{ bnome }}</h1>
-    <input
-      type="text"
-      :value="bnome"
-      @input="$emit('update:bnome', $event.target.value)"
-    />
-    <button v-on:click="teste">Teste</button>
+    <h1>Usuario: {{ name }}</h1>
     <h1 v-if="usuario">
-      {{ usuario.data.age }}
+      {{ usuario.age }}
     </h1>
+
+    <h1 v-else>Digite Nome para busca</h1>
   </div>
 </template>
-
+sc
 <script>
-import { defineComponent, onMounted, ref } from "@vue/runtime-core";
+import { defineComponent } from "@vue/runtime-core";
 import api from "../services/api";
-import router from "@/routes/router.js";
 
-export default {
+export default defineComponent({
   name: "Usuario",
-  props: ["bnome"],
-  emits: ["update:bnome"],
+  props: ["name"],
   data() {
     return {
       usuario: [],
     };
   },
+
   watch: {
-    bnome: function (newVal, oldVal) {
-      // watch it
-      console.log("Prop changed: ", newVal, " | was: ", oldVal);
+    name: function (newVal, oldVal) {
+      // console.log("Prop changed: ", newVal, " | was: ", oldVal);
+      this.teste();
     },
+  },
+  beforeMount() {
+    this.teste();
   },
   methods: {
     async teste() {
-      var nome = this.bnome;
-      // const usuario = ref([]);
-      // let fetchUsuario = () =>
+      var nome = this.name;
+      console.warn(this.name);
       try {
         const apiusuario = await api.get("/?name=" + nome);
-        // .then((resp) => (apiusuario.value = resp.data))
-        // .catch((err) => console.log(err));
-        console.warn(apiusuario.data);
-        // console.warn(apiusuario.data);
-        this.usuario = apiusuario;
-        console.warn(this.usuario);
+
+        this.usuario = apiusuario.data;
       } catch (err) {
         console.log(err);
       }
-      // onMounted(fetchUsuario);
-      // return { usuario };
     },
   },
-};
+});
 </script>

@@ -1,22 +1,15 @@
+
 <template>
   <div>
-    <!-- <router-link class="link" :to="{ path: '/user', query: { name: 'Foo' }}">Say hello</router-link> -->
-    <!-- <router-view /> -->
-    <!-- <AgifyApi /> -->
-    <h1>APP: {{ bnome }}</h1>
-    <Usuario v-model:bnome="bnome" />
+    <Navbar />
+    <router-view />
   </div>
 </template>
 
 <script>
-import AgifyApi from "./components/AgifyApi.vue";
-import Usuario from "./components/Usuario.vue";
+import Navbar from "./components/Navbar.vue";
 export default {
-  components: { Usuario },
-  data() {
-    return {
-      bnome: "v-model argument example",
-    };
-  },
+  components: { Navbar },
 };
 </script>
+
