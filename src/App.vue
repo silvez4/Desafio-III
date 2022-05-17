@@ -20,13 +20,18 @@ export default {
   --blue: hsl(190, 96%, 73%);
   --dark-purple: hsl(312, 40%, 26%);
   --dark-blue: hsl(191, 65%, 57%);
-  --gradiente: linear-gradient(
-    45deg,
+  --gradiente-round: radial-gradient(
     var(--purple),
     var(--dark-blue),
     var(--blue)
   );
+  --gradiente-up: linear-gradient(var(--purple), var(--dark-blue), var(--blue));
   font-size: 62.5%;
+}
+body {
+  overflow: hidden;
+  height: 100vh;
+  background: var(--gradiente-round);
 }
 *,
 *::before,

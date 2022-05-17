@@ -35,7 +35,7 @@ export default {
 <style scoped>
 .topNavbar {
   padding: 1rem;
-  background: var(--gradiente);
+  background: var(--gradiente-up);
   text-align: center;
 }
 .topNavbar button,
@@ -64,11 +64,12 @@ export default {
   );
   background-size: 300%;
   background-position: left;
-  transition: background-position 1s, color 1s;
+  transition: all 500ms;
 }
 .topNavbar button:hover {
   color: var(--blue);
   background-position: right;
+  transform: scale(1.1);
 }
 </style>
 
