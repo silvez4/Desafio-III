@@ -13,7 +13,7 @@
     <h1 v-if="name == ''">Busca Invalida</h1>
   </div>
 </template>
-sc
+
 <script>
 import { defineComponent } from "@vue/runtime-core";
 import api from "../services/api";
